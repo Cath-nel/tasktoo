@@ -1,8 +1,9 @@
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
 import org.w3c.dom.*;
-import gson.JsonObject;
-import com.google.gson.JsonArray;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.util.Scanner;
@@ -26,6 +27,11 @@ public class XMLReader {
             String fieldName = scanner.nextLine().trim();
             // Get the root element
             
+            if (!scanner.hasNextLine()) {
+                System.out.println("Field name cannot be empty.");
+                return; // Exit the program if no input is given
+            }
+
             // Find and print all values for the specified field
             NodeList elements = doc.getElementsByTagName(fieldName);
             if (elements.getLength() == 0) {
